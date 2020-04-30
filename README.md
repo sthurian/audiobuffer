@@ -12,8 +12,9 @@ This library is part of a bigger project i am working on, so it lives in the nam
 ## Example
 ```c++
 #include <cstring>
-#include "audiobuffer.h"
+#include <iostream>
 
+#include "audiobuffer.h"
 using namespace aal;  // namespace of audio abstraction layer (aal)
 
 int main() {
