@@ -63,12 +63,16 @@ Generic base class that provides the common interface.
 |[*x*]-operator|returns the *x*th channel as Channel\<T>|
 |&-operator|returns the underlying buffer for read/write access as T*|
 ### InterleavedAudioBuffer\<T>
+Subclass of AudioBuffer\<T>.
+
 AudioBuffer where the underlying buffer (e.g. from the audio driver) is interleaved (e.g. for stereo: LRLRLRlR)
 |method|description|
 |---|---|
 |copyTo\<*format*>(InterleavedAudioBuffer\<*format*>& target)|copies and converts the buffer to the target buffer with *format*|
 
 ### NonInterleavedAudioBuffer\<T>
+Subclass of AudioBuffer\<T>.
+
 AudioBuffer where the underlying buffer (e.g. from the audio driver) is non-interleaved (e.g. for stereo: LLLLRRRR)
 |method|description|
 |---|---|
