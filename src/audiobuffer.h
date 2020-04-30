@@ -5,7 +5,6 @@
 
 #include <cmath>
 #include <cstdlib>
-#include <iostream>
 #include <memory>
 #include <vector>
 namespace aal {
@@ -20,12 +19,6 @@ class Buffer {
     Buffer(uint32_t size) : size(size) { this->buffer = (T*)malloc(sizeof(T) * size); };
     virtual ~Buffer() { free(this->buffer); };
     T* operator&() const { return this->buffer; }
-
-    // tmp
-    void printBuffer() {
-        for (uint32_t i = 0; i < size; i++) std::cout << (float)buffer[i] << ", ";
-        std::cout << std::endl;
-    }
 };
 
 template <typename T>

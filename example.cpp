@@ -1,4 +1,5 @@
 #include <cstring>
+#include <iostream>
 
 #include "audiobuffer.h"
 using namespace aal;  // namespace of audio abstraction layer (aal)
