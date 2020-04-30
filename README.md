@@ -65,7 +65,7 @@ Generic base class that provides the common interface.
 ### InterleavedAudioBuffer\<T>
 Subclass of AudioBuffer\<T>.
 
-AudioBuffer where the underlying buffer (e.g. from the audio driver) is interleaved (e.g. for stereo: LRLRLRlR)
+AudioBuffer where the underlying buffer (e.g. from the audio driver) is interleaved (e.g. for stereo: LRLRLRLR)
 |method|description|
 |---|---|
 |copyTo\<*format*>(InterleavedAudioBuffer\<*format*>& target)|copies and converts the buffer to the target buffer with *format*|
