@@ -62,15 +62,10 @@ class InterleavedChannel : public Channel<T> {
    public:
     InterleavedChannel(const AudioBuffer<T>* buffer, uint16_t index) : Channel<T>(buffer, index){};
     const T* operator[](unsigned int i) const {
-        uint16_t k = (i + this->index * this->buffer->getFrames());
-
-        return &*this->buffer + ((k % this->buffer->getFrames()) * this->buffer->getChannels() +
-                                 (uint16_t)std::floor(k / this->buffer->getFrames()));
+        return &*this->buffer + i * this->buffer->getChannels() + this->index;
     }
     T& operator[](unsigned int i) {
-        uint16_t k = (i + this->index * this->buffer->getFrames());
-        return *(&*this->buffer + ((k % this->buffer->getFrames()) * this->buffer->getChannels() +
-                                   (uint16_t)std::floor(k / this->buffer->getFrames())));
+        return *(&*this->buffer + i * this->buffer->getChannels() + this->index);
     }
 };
 
