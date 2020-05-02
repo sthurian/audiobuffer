@@ -117,7 +117,7 @@ class AudioBuffer : public Buffer<T> {
 // one to ones in case user specifies same outFormat
 template <>
 template <>
-void AudioBuffer<float>::_copyTo(AudioBuffer<float>& targetBuffer) {
+inline void AudioBuffer<float>::_copyTo(AudioBuffer<float>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (&*this)[i];
     };
@@ -125,7 +125,7 @@ void AudioBuffer<float>::_copyTo(AudioBuffer<float>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
+inline void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (&*this)[i];
     };
@@ -133,7 +133,7 @@ void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
+inline void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (&*this)[i];
     };
@@ -141,7 +141,7 @@ void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
+inline void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (&*this)[i];
     };
@@ -150,7 +150,7 @@ void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int32_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
+inline void AudioBuffer<int32_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (float)((&*this)[i] / 2147483648.0);
     };
@@ -160,7 +160,7 @@ void AudioBuffer<int32_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int16_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
+inline void AudioBuffer<int16_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (float)((&*this)[i] / 32768.0);
     };
@@ -168,7 +168,7 @@ void AudioBuffer<int16_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int8_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
+inline void AudioBuffer<int8_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (float)((&*this)[i] / 128.0);
     };
@@ -177,7 +177,7 @@ void AudioBuffer<int8_t>::_copyTo(AudioBuffer<float>& targetBuffer) {
 // from float to ints
 template <>
 template <>
-void AudioBuffer<float>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
+inline void AudioBuffer<float>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] =
             (int32_t)std::min(std::lround((&*this)[i] * 2147483648.0), 2147483647L);
@@ -186,7 +186,7 @@ void AudioBuffer<float>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<float>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
+inline void AudioBuffer<float>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (int16_t)std::min(std::lround((&*this)[i] * 32768.0), 32767L);
     };
@@ -194,7 +194,7 @@ void AudioBuffer<float>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<float>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
+inline void AudioBuffer<float>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (int8_t)std::min(std::lround((&*this)[i] * 128.0), 127L);
     };
@@ -204,7 +204,7 @@ void AudioBuffer<float>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
+inline void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (int16_t)(((&*this)[i] >> 16) & 0x0000ffff);
     };
@@ -212,7 +212,7 @@ void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
+inline void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (int8_t)(((&*this)[i] >> 24) & 0x000000ff);
     };
@@ -222,7 +222,7 @@ void AudioBuffer<int32_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
+inline void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = ((int32_t)(&*this)[i]) << 16;
     };
@@ -230,7 +230,7 @@ void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
+inline void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = (int8_t)(((&*this)[i] >> 8) & 0x00ff);
     };
@@ -240,7 +240,7 @@ void AudioBuffer<int16_t>::_copyTo(AudioBuffer<int8_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
+inline void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = ((int32_t)(&*this)[i]) << 24;
     };
@@ -248,7 +248,7 @@ void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int32_t>& targetBuffer) {
 
 template <>
 template <>
-void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
+inline void AudioBuffer<int8_t>::_copyTo(AudioBuffer<int16_t>& targetBuffer) {
     for (uint32_t i = 0; i < this->getChannels() * this->getFrames(); i++) {
         (&targetBuffer)[i] = ((int16_t)(&*this)[i]) << 8;
     };
