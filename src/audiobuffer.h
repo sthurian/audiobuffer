@@ -16,7 +16,7 @@ class Buffer {
     uint32_t size;
 
    public:
-    Buffer(uint32_t size) : size(size) { this->buffer = (T*)malloc(sizeof(T) * size); };
+    Buffer(uint32_t size) : size(size) { this->buffer = (T*)calloc(sizeof(T), size); };
     virtual ~Buffer() { free(this->buffer); };
     T* operator&() const { return this->buffer; }
 };
@@ -109,6 +109,7 @@ class AudioBuffer : public Buffer<T> {
 
     const uint16_t getFrames() const { return frames; };
     const uint16_t getChannels() const { return channels; };
+    uint8_t getSampleSize() { return sizeof(T); };
     virtual Channel<T>& operator[](unsigned int i) const = 0;
 };
 
